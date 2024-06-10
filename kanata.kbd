@@ -1,0 +1,88 @@
+(include header.kbd)
+
+(defcfg
+    sequence-input-mode hidden-delay-type
+)
+
+(defseq
+    qui (q i)
+    que (q e)
+    quo (q u)
+    qua (q ')
+
+    rl  (r q)
+)
+
+(defvirtualkeys
+    qui (macro q u i)
+    que (macro q u e)
+    quo (macro q u o)
+    qua (macro q u a)
+
+    rl (macro r l)
+)
+
+(defalias
+    rld (multi (layer-switch eventide) lrld)
+
+    sft (one-shot 65535 lsft)
+    ctl (one-shot 65535 lctl)
+    alt (one-shot 65535 lalt)
+    met (one-shot 65535 lmet)
+
+    lft (layer-toggle navigation)
+    rgt (layer-toggle symbol)
+    bth (layer-toggle both)
+
+    mgc (switch
+        ((key-history u 1)) e break
+
+        ((key-history a 1)) (multi bspc (release-key a) (macro 5 o a)) break
+
+        ((key-history k 1)) (macro e d) break
+        ((and (key-history k 2) (key-history i 1))) d break
+
+        () rpt break
+    )
+
+    q (macro sldr q)
+    z (switch
+        ((key-history r 1)) l break
+        () z break
+    )
+)
+
+(defsrc
+    2    3    4    5    6      7    8    9    0    -
+    q    w    e    r    t      u    i    o    p    [
+    a    s    d    f    g      j    k    l    ;    '
+              c    v           m    ,
+)
+
+(deflayer eventide
+    b    l    d    w    v      @z   @mgc o    u    @.
+    n    r    t    y    g      m    h    a    e    i
+    x    j    k    c    p      f    '    @q   /    @,
+              @lft s           spc  @rgt
+)
+
+(deflayer symbol
+    _    @$   @^   @^   @%     @@   _    -    @<   @>
+    \    S-9  S-0  @{   @!     @_   @ctl @sft @met @alt
+    _    [    ]    @}   @*     _    _    _    _    _
+              @bth C-bspc      _    _
+)
+
+(deflayer navigation
+    _    _    _    _    _      _    _    _    _    _
+    @alt @met @sft @ctl _      _    _    _    _    _
+    _    _    _    _    _      _    _    _    _    _
+                   _    _      ret  @bth
+)
+
+(deflayer both
+    7    5    3    1    _      @rld 0    2    4    6
+    @alt @met @sft @ctl 9      8    @ctl @sft @met @alt
+    _    _    _    _    _      _    _    _    _    _
+                   _    _      _    _
+)
