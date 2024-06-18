@@ -61,9 +61,9 @@
 )
 
 (deflayer eventide
-    b    l    d    w    v      @z   @mgc o    u    @,
+    b    l    d    w    v      @z   @mgc o    u    @q
     n    r    t    y    g      m    h    a    i    e
-    x    j    k    c    p      f    '    @q   /    @.
+    x    j    k    c    p      f    '    @.   @,   /
               @lft s           spc  @rgt
 )
 
