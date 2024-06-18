@@ -6,9 +6,9 @@
 
 (defseq
     qui (q i)
-    que (q e)
-    quo (q u)
-    qua (q ')
+    que (q u)
+    quo (q o)
+    qua (q a)
 
     rl  (r q)
 )
@@ -35,7 +35,8 @@
     bth (layer-toggle both)
 
     mgc (switch
-        ((key-history u 1)) e break
+        ;;() = break
+        ((key-history u 1)) i break
 
         ((key-history a 1)) (multi bspc (release-key a) (macro 5 o a)) break
 
@@ -60,22 +61,22 @@
 )
 
 (deflayer eventide
-    b    l    d    w    v      @z   @mgc o    u    @.
-    n    r    t    y    g      m    h    a    e    i
-    x    j    k    c    p      f    '    @q   /    @,
+    b    l    d    w    v      @z   @mgc o    u    @,
+    n    r    t    y    g      m    h    a    i    e
+    x    j    k    c    p      f    '    @q   /    @.
               @lft s           spc  @rgt
 )
 
 (deflayer symbol
-    _    @$   @^   @^   @%     @@   _    -    @<   @>
+    _    @$   @^   @^   @%     =    @+   -    @<   @>
     \    S-9  S-0  @{   @!     @_   @ctl @sft @met @alt
-    _    [    ]    @}   @*     _    _    _    _    _
+    _    [    ]    @}   @*     @@   _    _    _    _
               @bth C-bspc      _    _
 )
 
 (deflayer navigation
-    _    _    _    _    _      _    _    _    _    _
-    @alt @met @sft @ctl _      _    _    _    _    _
+    _    _    _    _    _      _    rght up   _    _
+    @alt @met @sft @ctl _      _    lft  down _    _
     _    _    _    _    _      _    _    _    _    _
                    _    _      ret  @bth
 )
