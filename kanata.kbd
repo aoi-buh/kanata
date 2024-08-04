@@ -40,30 +40,6 @@
     bth (layer-toggle both)
 
     mgc (multi (on-press tap-virtualkey mgc) (switch
-        ;;() = break
-        #|
-        ((key-history u 1)) e break
-
-        ((and (key-history w 2) (key-history a 1))) y break
-        ((key-history a 1)) (multi bspc (release-key a) (macro 5 o a)) break
-
-        ((key-history w 1)) (macro h y spc) break
-
-        ((key-history k 1)) (macro e d) break
-        ((and (key-history k 2) (key-history i 1))) d break
-        ((and (key-history k 2) (key-history y 1))) (macro d i v) break
-
-        ((key-history v 1)) (macro e r y) break
-        ((and (key-history v 3) (key-history e 2) (key-history r 1))) y break
-
-        ((key-history y 1)) p break
-        ((key-history g 1)) y break
-
-        ((and (key-history u 2) (key-history s 1))) e break
-
-        ((key-history spc 1)) @sft break
-        |#
-
         ((key-history u 1)) e break
         ((key-history a 1)) (multi bspc (release-key a) (macro 5 o a)) break
 
@@ -71,22 +47,23 @@
         ((key-history q 1)) XX break
         ((key-history i 1)) (macro 5 ' m) break
 
+        ((and (key-history r 2) (key-history l 1))) (macro bspc z) break
+        ((key-history f 1)) (macro bspc z) break
+        ((key-history m 1)) (macro bspc z) break
+
         () rpt break
     ))
 
-    q (switch
+    , (fork , (unmod ;) (lsft))
+    . (fork . S-; (lsft))
+
+    q (macro sldr q)
+
+    z (switch
         ((key-history r 1)) l break
-        () (macro sldr q) break
-    )
-
-    p (switch
         ((key-history f 1)) rpt break
-        () p break
-    )
-
-    j (switch
         ((key-history m 1)) rpt break
-        () j break
+        () z break
     )
 )
 
@@ -96,28 +73,14 @@
     a    s    d    f    g      j    k    l    ;    '
               c    v           m    ,
 )
-#|
-(deflayer zenith
-    b    l    m    w    v      j    '    o    u    @,
-    n    r    t    d    c      y    h    a    e    i
-    z    @x   k    g    p      f    @mgc @q   /    @.
-              @lft s           spc  @rgt
-)
-|#
+
 (deflayer eventide
-    b    l    d    w    z      '    @.   u    o    @,
-    n    r    t    c    @p     m    h    e    a    i
-    x    @j   k    g    v      f    @mgc @q   /    y
+    b    l    d    w    @z     '    @.   u    o    y
+    n    r    t    c    p      m    h    e    a    i
+    x    j    k    g    v      f    @mgc @q   /    @,
               @lft s           spc  @rgt
 )
-#|
-(deflayer afternoon
-    b    f    l    v    @q     '    w    o    u    @,
-    n    s    h    t    k      c    d    a    e    i
-    z    x    j    m    @mgc   p    g    @.   /    y
-              @lft r           spc  @rgt
-)
-|#
+
 (deflayer symbol
     _    @$   @^   @^   @%     =    @+   -    @<   @>
     \    S-9  S-0  @{   @!     @_   @ctl @sft @met @alt
